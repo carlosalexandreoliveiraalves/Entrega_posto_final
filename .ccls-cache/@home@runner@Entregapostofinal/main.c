@@ -31,7 +31,7 @@ int main() {
 
   printf("O usuário deverá ser capaz de:\n" green
          "- Determinar e aumentar o tamanho da fila a qualquer\n"
-         "momento que desejar.\n"
+         "momento que o usuário desejar.\n"
          "- Visualizar os carros que estão e já estiveram\n"
          "na fila de espera.\n"
          "- Imprimir o relatório, em formato txt, com as\n principais informações.\n\n");
@@ -49,7 +49,7 @@ int main() {
   }
   printf("\n");
 
-  printf(white "Informe o tamanho da fila.\n");
+  printf(white "Informe quantas vagas a fila receberá.\n");
   scanf("%d", &fila);
   teste(&fila);
   cont = fila - 1;
@@ -317,12 +317,22 @@ int main() {
               exit(0);
             }  // inicialização do ponteiro para armazenar o arquivo txt
             system("clear");
-            printf(green "Arquivo impresso." white);
-            fprintf(pont_arquivo, "---------Arquivo de impressão---------");
+            printf(green "Arquivo impresso.");
+            fprintf(pont_arquivo, "---------Arquivo de impressão---------\n");
+            
+            if (data.tm_hour < 3) { // exibir a data em dia, mês e ano.
+              fprintf(pont_arquivo,  "Data: %d/%d/%d\n", data.tm_mday - 1, data.tm_mon + 1,
+              data.tm_year + 1900);
+            } else {
+              fprintf(pont_arquivo,  "Data de impressão: %d/%d/%d\n", data.tm_mday, data.tm_mon + 1,
+              data.tm_year + 1900);
+            } //informa a data em que foi impresso.
+            
             fprintf(pont_arquivo, "\nLitros vendidos: %.2f L\n", 200 - comb_restante);
             fprintf(pont_arquivo, "\nValor total arrecadado com as vendas: R$ %.2f\n", (200 - comb_restante) * preco);
             fprintf(pont_arquivo, "\nQuantidade de carros atendidos: %d\n", qtd_atendidos);
             fprintf(pont_arquivo, "\nQuantidade de combustível restante no tanque: %.2f\n", comb_restante);
+            fprintf(pont_arquivo, "\nCarros atendidos no dia:");
             while (j < l) { // exibição dos carros atendidos
               fprintf(pont_arquivo, "\n[%dº] Carro do dia.", k);
               fprintf(pont_arquivo, "\nPlaca: %s", carro_atendido[j].placa);
@@ -334,9 +344,11 @@ int main() {
               j = j + 1;
               k = k + 1;
             }
+            
 
             j = 0;
             k = 1;
+            
             fclose(pont_arquivo);
             printf(cyan "\n\n---Aperte enter para continuar---" white);
             getchar();
@@ -364,12 +376,12 @@ int main() {
       case 6:
         if (comb_restante == 0) {
           printf(red "Bomba sem combustível! Não poderá adicionar mais "
-                     "posições!\n\n" white);
+                     "vagas!\n\n" white);
           opcao1 = 7;
           break;
         } else {
           cont++;
-          printf(green "Adicionado mais uma posição na fila.\n\n" white);
+          printf(green "Adicionado mais uma vaga na fila.\n\n" white);
           tam_fila = (struct Tcarro *)realloc(
               tam_fila, (cont + 1) * sizeof(struct Tcarro));
           fila = fila + 1;

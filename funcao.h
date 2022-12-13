@@ -33,18 +33,20 @@ void teste2(float *preco) {
 void hora (time_t *valor_data, struct tm *data) { //função para controle de horário de brasília.
   if (data->tm_hour >= 3) {
     if (data->tm_min >=10) {
-    printf("                    |Horário atual: %d:%d\n", data->tm_hour-3, data->tm_min);
+    printf("                    |Horário de Brasília: %d:%d\n", data->tm_hour-3, data->tm_min);
     } else {
-      printf("                    |Horário atual: %d:0%d\n", data->tm_hour-3, data->tm_min);
+      printf("                    |Horário de Brasília: %d:0%d\n", data->tm_hour-3, data->tm_min);
     }
   } else {
     if (data->tm_min >= 10) {
-    printf("                    |Horário atual: %d:%d\n", data->tm_hour+21, data->tm_min);
+    printf("                    |Horário de Brasília: %d:%d\n", data->tm_hour+21, data->tm_min);
     } else {
-      printf("                    |Horário atual: %d:0%d\n", data->tm_hour+21, data->tm_min);
+      printf("                    |Horário de Brasília: %d:0%d\n", data->tm_hour+21, data->tm_min);
     }
   }
 } 
+
+
 
 void minimenu(float *comb_restante, int *qtd_carros, int *fila) {
   time_t valor_data; //variável que receberá o valor do horário
@@ -63,7 +65,7 @@ void menu(int *opcao1) {
   printf("[1] - Adicionar um carro na fila\n\n");
   printf("[2] - Abastecimento\n\n");
   printf("[3] - Exibir carros na fila de espera\n\n");
-  printf("[4] - Relatórios\n\n");
+  printf("[4] - Relatório\n\n");
   printf("[5] - Encerrar\n\n");
   printf("[6] - Adicionar uma posição na fila\n\n");
   printf("[7] - Atualizar\n\n");
