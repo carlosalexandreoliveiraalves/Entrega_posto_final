@@ -31,7 +31,7 @@ int main() {
 
   printf("O usuário deverá ser capaz de:\n" green
          "- Determinar e aumentar o tamanho da fila a qualquer\n"
-         "momento que o usuário desejar.\n"
+         "momento que desejar.\n"
          "- Visualizar os carros que estão e já estiveram\n"
          "na fila de espera.\n"
          "- Imprimir o relatório, em formato txt, com as\n principais informações.\n\n");
