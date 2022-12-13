@@ -27,10 +27,10 @@ int main() {
 
   printf(blue "Autor: Carlos Alexandre Oliveira Alves\n");
   printf(white "\nBem-vindo.\nEste programa tem como objetivo: "
-               "melhorar o gerencioamento\nde informações de um posto.\n\n");
+               "melhorar o gerenciamento\ndas informações de um posto.\n\n");
 
   printf("O usuário deverá ser capaz de:\n" green
-         "- Determinar e aumentar o tamanho da fila a qualquer\n"
+         "- Aumentar o tamanho da fila a qualquer\n"
          "momento que desejar.\n"
          "- Visualizar os carros que estão e já estiveram\n"
          "na fila de espera.\n"
